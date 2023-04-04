@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Cheng&#39;s Website</title>
+<meta name="keywords" content="">
+<meta name="description" content="My Research Ambition I&rsquo;m aiming to achieve the optimal trade-off between theory and learning.
+Design algorithms that benefit both from rigorness of theory and flexibility of ML for different applications from combinatorial optimization to derivative pricing.
+This figure here shows my general research ambition. For any learning task, we can measure the amount of struture or prior knowledge we incorportate in the particular learning method we use, and we put an axis here.">
+<meta name="author" content="">
+<link rel="canonical" href="https://chichengmessi.github.io/research/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.6a98292fb8fa8cf0f3ba4042d4b75515c04267550f3ad49ff6271b5af9562443.css" integrity="sha256-apgpL7j6jPDzukBC1LdVFcBCZ1UPOtSf9icbWvlWJEM=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://chichengmessi.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://chichengmessi.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://chichengmessi.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://chichengmessi.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://chichengmessi.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="" />
+<meta property="og:description" content="My Research Ambition I&rsquo;m aiming to achieve the optimal trade-off between theory and learning.
+Design algorithms that benefit both from rigorness of theory and flexibility of ML for different applications from combinatorial optimization to derivative pricing.
+This figure here shows my general research ambition. For any learning task, we can measure the amount of struture or prior knowledge we incorportate in the particular learning method we use, and we put an axis here." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://chichengmessi.github.io/research/" />
+<meta property="og:image" content="https://chichengmessi.github.io/selfie_research.JPG" /><meta property="article:section" content="" />
+
+
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://chichengmessi.github.io/selfie_research.JPG" />
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="My Research Ambition I&rsquo;m aiming to achieve the optimal trade-off between theory and learning.
+Design algorithms that benefit both from rigorness of theory and flexibility of ML for different applications from combinatorial optimization to derivative pricing.
+This figure here shows my general research ambition. For any learning task, we can measure the amount of struture or prior knowledge we incorportate in the particular learning method we use, and we put an axis here."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "",
+      "item": "https://chichengmessi.github.io/research/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "",
+  "name": "",
+  "description": "My Research Ambition I\u0026rsquo;m aiming to achieve the optimal trade-off between theory and learning.\nDesign algorithms that benefit both from rigorness of theory and flexibility of ML for different applications from combinatorial optimization to derivative pricing.\nThis figure here shows my general research ambition. For any learning task, we can measure the amount of struture or prior knowledge we incorportate in the particular learning method we use, and we put an axis here.",
+  "keywords": [
+    
+  ],
+  "articleBody": "My Research Ambition I’m aiming to achieve the optimal trade-off between theory and learning.\nDesign algorithms that benefit both from rigorness of theory and flexibility of ML for different applications from combinatorial optimization to derivative pricing.\nThis figure here shows my general research ambition. For any learning task, we can measure the amount of struture or prior knowledge we incorportate in the particular learning method we use, and we put an axis here. On the left-most of this axis, we have “pure learning” methods where we generally learn everything from scratch without any prior modeling about the system, and these methods are easy to set up but require a large amount of training. While on the right-most of this axis we have methods that are “pure theory”, where they generally require a huge effort in defining rigorous mathematical formulation of system dynamics, optimizations or optimality conditions, but once these things are set up, we could analytically solve for optimal solutions without any training.\nI want to argue that all the methods on this axis is a particular method that WE CHOOSE to solve the problem (e.g. optimal control / optimization … ) at hand, and the optimal solution method in terms of prior modelling effort is unlikely to lie at the two end-point of this axis but somewhere in the middle for a variety of problems. If we can “theorize” “pure learning” methods or “learningrize” “pure theory” methods, we could potentially hit the optimal trade-off between rigorousness and flexibility, thus achieving optimal solutions or policies with relatively small amount of modelling effort as well as relatively small amount of training effort.\nThis is what I am trying to pursue in my master study and my research.\nBelow I will discuss my projects that are directly related to this topic.\nML (RL) for CG For solving large scale optimization problem (color-coded by dark blue in figure above), “pure learning” method corresponds to train a large neural net directly to output optimal solution from solved optimizations, and a “pure theory” method correpsonds to traditional fixed-rule operational research algorithm column geneartion (CG). By trying to achieve an optimal trade-off between learning and theory, I embed a Reinfocement learning agent inside CG algorithm where agent learn to select varaible to enter the basis optimally, which led to my first project RLCG and my first publication in NeurIPS 2022. The sturcure / prior knowledge I use to achieve such trade-off is the fact that the solution process / optimal basis dynamics is given by CG algorithm rather than a pure generative process or an arbitrary mapping in “pure learning” methods.\nI embed a RL agent into column generation algorithm as follows: Thus the MDP components for RL are the following: And I denote the above algorithms as RLCG, which is a method lies in the middle of the prior-modelling axis for solving large scale optimization problems. The results below are a direct comparison to the traditional operational research “pure theory” algorithm (denoted as greedy), which always select decision variables that have the most negetive reduced cost. RLCG beats the “pure theory” algorithm as it leads to faster convergence to optimal solutions for different optimization problems (only VRPTW shown here): This work is published in NeurIPS 2022.\nMachine learning for physical system control For solving optimal control problem (color-coded by green in figure above), “pure learning” method corresponds to model-free RL where we use countless of interactions with the environment and reward signals to learn a value function or optimize a policy, and a “pure theory” method correpsonds to traditional optimal control method where we model system with controlled differential equations and then derive optimality condition using maximum principle or HJB which are in the form of PDEs, and solving those PDEs will generally lead to optimal controls / policy. By trying to achieve an optimal trade-off between learning and theory, I develop a neural ODE based learning algorithm that can learn the dynamics as well as optimal control at the same time from reletively small amount of interactions from the environment, which led to my thesis work (in preparation) and an application project of irrigation control. The sturcure / prior knowledge I use to achieve such trade-off is the fact that the systems I modelled here are continous in nature and the optimal control is conducted in a vector field.\nThe model that I use is a neural ODE model composed of both a dynamic learner (g) and a controller (h), and how we do a particular trajectory rollout or a prediction is the following: The adjoint-method training of dynamic learner and controller is done alternatively so that in the end we are learning both the dynamics of the system as well as the optimal control in that dynamics for some objectives.\nHere is an example of a simple control task in a 2-dim state (x) and 1-dim control (u) environment where the dynamics is given by dx/dt = f(x,u) = Ax + Bu, and we are trying to bring the system from state (0,0) to (1,-1) in shortest time: We can see that we successfully bring state to (1,-1), and the vector field or the model we learned by h (shown in oranage arrows) is almost the same as the true dynamics or vector field (shown in blue). The learned controller h is almost the same as analytical optimal control from solving Maximum Principle, but we achieve this without having any knowledge of the true dynamics f(x,u).\nBy applying this new continous control method denote as NODEC to the irrigation control problem where dynamics of soil mositure level is given by a particular SDE, I was able to complete a project in India funded by IC-IMPARCS, where I could achieve similar soil moisture evolution and crop yield while saving more than 30% of total water usage compared to an optimization-based method (a “pure theory” method) and farmer’s original irrigations: This method (NODEC) is a majority part of my master thesis and the application irrigation project report is in submission to Journal AGU: Advancing earth and space science.\nMachine learning for no-arbitrage pricing For modelling option price (color-coded by orange in figure above), “pure learning” method corresponds to fit a predictive model (either deterministic: LSTM or probabilistic: Gaussian process) using historical data, and a “pure theory” method corresponds to deriving no-arbitrage pricing following the dynamic-hedging arugments with an assumption of underlying asset price process model. By trying to achieve an optimal trade-off between learning and theory, I develop a ML pricing model that parameterize the arbitrage portfolio weights in some particular way so that the training leads to this model learning no-arbitrage prices even if the underlying asset price process is unknown, which led to my current collaboration with NYU Tandon department. The sturcure / prior knowledge I use to achieve such trade-off is the fact that the derivative prices generally, to a good approximation, respect no-arbitrage.\nThe pricing function learned by no-arbitrage ANN and the delta implied by the same function are the following: where we recover the analytical no-arbitrage solution without having any knowledge about the true underlying asset process.\nBy combining this no-arbitrage training with a probabilistic predictive model, we are able to account for fluctuations away from no-arbitrage price in the real-world: where we assume that the real option prices distribution has no-arbitrage price mean and Gaussian distributed noise around that mean.\nThis work is a colloborative work with NYU Tandon department and it is in preparation for submission to Journal of Finance.\nRecursive time series data augmentation Time series with an unique history can be thought of as one realization of a generally unknown dynamical system. When we try to model such system or when we have some downstream tasks (e.g. time series forecast), what if we don’t have enough prior knowledge about the system to write down equation that governs dynamics of this system, and we also don’t have enough data (we just have one realization) to train a good ML model? How can we now find optimal trade-off between “pure theory”, which is completely unknown here, and “pure learning”, which is prone to overfit here due to lack of data?\nIn this work, we assume dynamics can be represented by some unknown differential equations, which gives us linearity of the solution. That is, if we take one realization of such dynamics, and take another realization, then the linear combination of these two is again a valid solution or realization of the same dynamical system, and this property holds for all time intervals. We can get different realizations by controlling the weights of linear combination. These intuitions lead us to design a recursive interpolation based time series augmentation method that can augment extreme limited time serues dataset: We also prove that the augmented time series (the linear combinations) are bounded within some close distance to the original time series. However, for many cases, we would like to use the data augmentation to improve downstream learning tasks. For this, we also investigate the relation between learning performance, properties of the time series, and the neural network structure if we use our augmentation on the time series and use all these data to train this nerual network in downstream task.\nThe results of downstream task performance improvement is shown here: where we show faster convergence and higher accuracy for downstream time series classification task, and we also study time series forecast and Reinforcement learning tasks in our work.\nThis work is published in ICLR 2023.\nOther projects I also work on other projects that are not a direct result of my goal from above, but still necessary tools for optimization and machine learning in general:\nQuantum computing reducing systemic risk in financial networks In highly connected fnancial networks, the failure of a single or a few institution can cascade into additional bank failures: This systemic risk can be mitigated by adjusting the loans, holding shares, and other liabilities connecting institutions in a way that prevents cascading of failures. We are approaching the systemic risk problem by attempting to optimize the connections between the institutions with financially meaningful objective and constraints: We notice that the cascade failures first spread through highly connected groups (a module) and then spread between modules, as the connection between banks are the brigde that failure spreads. This intution leads us to the two-stage cascade prevention method, where we would first partition financial networks into modulues (community detection), and then optimize the module sub-network connections individually. In this way, we could\nconfine cascade failures from its source and keep the change of connections to a minimum. We apply quantum annealing as our heuristic for community detection where it can achieve more accurate partitioning with less time complexity. In particular, the modularity maximization is formullated as QUBO, mapped to Pegasus embedding and then solved in D-wave Advantage Quantum Annealer. The cascade simulation is mitigated as a result of our method, indicated by delayed phase transition in cascade failures where financial network can withstand higher perturbation without failure: We also demonstrate similar results using real-world data, where we perturb the original network and optimized network with the same level of perturbation, and compare the cascade results. We can see that all the institutions in the original network (top) fail as a result of the perturbation while in the optimized network (bottom) only few institutions fail. This work is published in Nature Scientific Report on March, 2023.\nCentral bank cascade free control This work is a direct extension from previous work on cascade failure mitigation. Instead of posing change in connectivities between institutions (banks in this case) as a hard constraints on banks, we respect the objective of banks which is maximizing their own profits. Therefore, central bank aims to give incentives or penalties as control signal to the system whose dynamics are given by the zero-sum games formulated as individual banks’ greedy optimizations.\nWe already studied some property of such dynamical system we are trying to control, where for some particular controls we have converged Nash Equalibrium of the low level optimizations (banks), while for some other controls we have osscilation of between equalibriums: We are now in the stage of learning an optimal control corresponds to cascade-free trajectory of this compicated dynamical system.\n",
+  "wordCount" : "2044",
+  "inLanguage": "en",
+  "image":"https://chichengmessi.github.io/selfie_research.JPG","datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://chichengmessi.github.io/research/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Cheng's Website",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://chichengmessi.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://chichengmessi.github.io/" accesskey="h" title="Cheng&#39;s Website (Alt + H)">Cheng&#39;s Website</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://chichengmessi.github.io/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://chichengmessi.github.io/research/" title="Research">
+                    <span class="active">Research</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://chichengmessi.github.io/publish/" title="Publications and Talks">
+                    <span>Publications and Talks</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://chichengmessi.github.io/work/" title="Work Experience">
+                    <span>Work Experience</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://chichengmessi.github.io/startup/" title="Start-Up">
+                    <span>Start-Up</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://chichengmessi.github.io/life/" title="Life">
+                    <span>Life</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      
+    </h1>
+    <div class="post-meta">
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://chichengmessi.github.io/selfie_research.JPG" alt="Presentation at Vector Institution">
+        <p>Presentation at Vector Institution</p>
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#my-research-ambition" aria-label="My Research Ambition">My Research Ambition</a></li>
+                <li>
+                    <a href="#RLCG" aria-label="ML (RL) for CG">ML (RL) for CG</a></li>
+                <li>
+                    <a href="#NODEC" aria-label="Machine learning for physical system control">Machine learning for physical system control</a></li>
+                <li>
+                    <a href="#NoarbANN" aria-label="Machine learning for no-arbitrage pricing">Machine learning for no-arbitrage pricing</a></li>
+                <li>
+                    <a href="#RIM" aria-label="Recursive time series data augmentation">Recursive time series data augmentation</a></li>
+                <li>
+                    <a href="#other-projects" aria-label="Other projects">Other projects</a><ul>
+                        <ul>
+                        
+                <li>
+                    <a href="#QC" aria-label="Quantum computing reducing systemic risk in financial networks">Quantum computing reducing systemic risk in financial networks</a></li>
+                <li>
+                    <a href="#BankGame" aria-label="Central bank cascade free control">Central bank cascade free control</a>
+                </li>
+            </ul>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="my-research-ambition">My Research Ambition<a hidden class="anchor" aria-hidden="true" href="#my-research-ambition">#</a></h1>
+<p>I&rsquo;m aiming to achieve the optimal trade-off between theory and learning.</p>
+<p>Design algorithms that benefit both from rigorness of theory and flexibility of ML for different applications from combinatorial optimization to derivative pricing.</p>
+<p><img loading="lazy" src="/goal.png" alt="Example figure"  />
+</p>
+<p>This figure here shows my general research ambition. For any learning task, we can measure the amount of struture or prior knowledge we incorportate in the particular learning method we use, and we put an axis here. On the left-most of this axis, we have &ldquo;pure learning&rdquo; methods where we generally learn everything from scratch without any prior modeling about the system, and these methods are easy to set up but require a large amount of training. While on the right-most of this axis we have methods that are &ldquo;pure theory&rdquo;, where they generally require a huge effort in defining rigorous mathematical formulation of system dynamics, optimizations or optimality conditions, but once these things are set up, we could analytically solve for optimal solutions without any training.</p>
+<p>I want to argue that all the methods on this axis is a particular method that WE CHOOSE to solve the problem (e.g. optimal control / optimization &hellip; ) at hand, and the optimal solution method in terms of prior modelling effort is unlikely to lie at the two end-point of this axis but somewhere in the middle for a variety of problems. If we can &ldquo;theorize&rdquo; &ldquo;pure learning&rdquo; methods or &ldquo;learningrize&rdquo; &ldquo;pure theory&rdquo; methods, we could potentially hit the optimal trade-off between rigorousness and flexibility, thus achieving optimal solutions or policies with relatively small amount of modelling effort as well as relatively small amount of training effort.</p>
+<p><strong>This is what I am trying to pursue in my master study and my research.</strong></p>
+<p><strong>Below I will discuss my projects that are directly related to this topic.</strong></p>
+<hr>
+<h1 id="RLCG">ML (RL) for CG<a hidden class="anchor" aria-hidden="true" href="#RLCG">#</a></h1>
+<p>For solving large scale optimization problem <strong>(color-coded by dark blue in figure above)</strong>, &ldquo;pure learning&rdquo; method corresponds to train a large neural net directly to output optimal solution from solved optimizations, and a &ldquo;pure theory&rdquo; method correpsonds to traditional fixed-rule operational research algorithm column geneartion (CG). By trying to achieve an optimal trade-off between learning and theory, I embed a Reinfocement learning agent inside CG algorithm where agent learn to select varaible to enter the basis optimally, which led to my first project RLCG and my first publication in NeurIPS 2022. The sturcure / prior knowledge I use to achieve such trade-off is the fact that the solution process / optimal basis dynamics is given by CG algorithm rather than a pure generative process or an arbitrary mapping in &ldquo;pure learning&rdquo; methods.</p>
+<p>I embed a RL agent into column generation algorithm as follows:
+<img loading="lazy" src="/research/ML_CO/CG_RL.png" alt="Example figure"  />
+</p>
+<p>Thus the MDP components for RL are the following:
+<img loading="lazy" src="/research/ML_CO/MDP.png" alt="Example figure"  />
+</p>
+<p>And I denote the above algorithms as RLCG, which is a method lies in the middle of the prior-modelling axis for solving large scale optimization problems. The results below are a direct comparison to the traditional operational research &ldquo;pure theory&rdquo; algorithm (denoted as greedy), which always select decision variables that have the most negetive reduced cost. RLCG beats the &ldquo;pure theory&rdquo; algorithm as it leads to faster convergence to optimal solutions for different optimization problems (only VRPTW shown here):
+<img loading="lazy" src="/research/ML_CO/Results.png" alt="Example figure"  />
+</p>
+<p>This work is published in NeurIPS 2022.</p>
+<h1 id="NODEC">Machine learning for physical system control<a hidden class="anchor" aria-hidden="true" href="#NODEC">#</a></h1>
+<p>For solving optimal control problem <strong>(color-coded by green in figure above)</strong>, &ldquo;pure learning&rdquo; method corresponds to model-free RL where we use countless of interactions with the environment and reward signals to learn a value function or optimize a policy, and a &ldquo;pure theory&rdquo; method correpsonds to traditional optimal control method where we model system with controlled differential equations and then derive optimality condition using maximum principle or HJB which are in the form of PDEs, and solving those PDEs will generally lead to optimal controls / policy. By trying to achieve an optimal trade-off between learning and theory, I develop a neural ODE based learning algorithm that can learn the dynamics as well as optimal control at the same time from reletively small amount of interactions from the environment, which led to my thesis work (in preparation) and an application project of irrigation control. The sturcure / prior knowledge I use to achieve such trade-off is the fact that the systems I modelled here are continous in nature and the optimal control is conducted in a vector field.</p>
+<p>The model that I use is a neural ODE model composed of both a dynamic learner (g) and a controller (h), and how we do a particular trajectory rollout or a prediction is the following:
+<img loading="lazy" src="/research/ML_phy/model_.png" alt="Example figure"  />
+
+The adjoint-method training of dynamic learner and controller is done alternatively so that in the end we are learning both the dynamics of the system as well as the optimal control in that dynamics for some objectives.</p>
+<p>Here is an example of a simple control task in a 2-dim state (x) and 1-dim control (u) environment where the dynamics is given by dx/dt = f(x,u) = Ax + Bu, and we are trying to bring the system from state (0,0) to (1,-1) in shortest time:
+<img loading="lazy" src="/research/ML_phy/simple_task_.png" alt="Example figure"  />
+</p>
+<p>We can see that we successfully bring state to (1,-1), and the vector field or the model we learned by h (shown in oranage arrows) is almost the same as the true dynamics or vector field (shown in blue). The learned controller h is almost the same as analytical optimal control from solving Maximum Principle, but we achieve this without having any knowledge of the true dynamics f(x,u).</p>
+<p>By applying this new continous control method denote as NODEC to the irrigation control problem where dynamics of soil mositure level is given by a particular SDE, I was able to complete a project in India funded by IC-IMPARCS, where I could achieve similar soil moisture evolution and crop yield while saving more than 30% of total water usage compared to an optimization-based method (a &ldquo;pure theory&rdquo; method) and farmer&rsquo;s original irrigations:
+<img loading="lazy" src="/research/ML_phy/application.png" alt="Example figure"  />
+
+<img loading="lazy" src="/research/ML_phy/application2.png" alt="Example figure"  />
+</p>
+<p>This method (NODEC) is a majority part of my master thesis and the application irrigation project report is in submission to Journal AGU: Advancing earth and space science.</p>
+<h1 id="NoarbANN">Machine learning for no-arbitrage pricing<a hidden class="anchor" aria-hidden="true" href="#NoarbANN">#</a></h1>
+<p>For modelling option price <strong>(color-coded by orange in figure above)</strong>, &ldquo;pure learning&rdquo; method corresponds to fit a predictive model (either deterministic: LSTM or probabilistic: Gaussian process) using historical data, and a &ldquo;pure theory&rdquo; method corresponds to deriving no-arbitrage pricing following the dynamic-hedging arugments with an assumption of underlying asset price process model. By trying to achieve an optimal trade-off between learning and theory, I develop a ML pricing model that parameterize the arbitrage portfolio weights in some particular way so that the training leads to this model learning no-arbitrage prices even if the underlying asset price process is unknown, which led to my current collaboration with NYU Tandon department. The sturcure / prior knowledge I use to achieve such trade-off is the fact that the derivative prices generally, to a good approximation, respect no-arbitrage.</p>
+<p>The pricing function learned by no-arbitrage ANN and the delta implied by the same function are the following:
+<img loading="lazy" src="/research/ML_Fin/price_delta.png" alt="Example figure"  />
+
+where we recover the analytical no-arbitrage solution without having any knowledge about the true underlying asset process.</p>
+<p>By combining this no-arbitrage training with a probabilistic predictive model, we are able to account for fluctuations away from no-arbitrage price in the real-world:
+<img loading="lazy" src="/research/ML_Fin/real.png" alt="Example figure"  />
+
+where we assume that the real option prices distribution has no-arbitrage price mean and Gaussian distributed noise around that mean.</p>
+<p>This work is a colloborative work with NYU Tandon department and it is in preparation for submission to Journal of Finance.</p>
+<h1 id="RIM">Recursive time series data augmentation<a hidden class="anchor" aria-hidden="true" href="#RIM">#</a></h1>
+<p>Time series with an unique history can be thought of as one realization of a generally unknown dynamical system. When we try to model such system or when we have some downstream tasks (e.g. time series forecast), what if we don&rsquo;t have enough prior knowledge about the system to write down equation that governs dynamics of this system, and we also don&rsquo;t have enough data (we just have one realization) to train a good ML model? How can we now find optimal trade-off between &ldquo;pure theory&rdquo;, which is completely unknown here, and &ldquo;pure learning&rdquo;, which is prone to overfit here due to lack of data?</p>
+<p>In this work, we assume dynamics can be represented by some unknown differential equations, which gives us linearity of the solution. That is, if we take one realization of such dynamics, and take another realization, then the linear combination of these two is again a valid solution or realization of the same dynamical system, and this property holds for all time intervals. We can get different realizations by controlling the weights of linear combination. These intuitions lead us to design a recursive interpolation based time series augmentation method that can augment extreme limited time serues dataset:
+<img loading="lazy" src="/research/RIM/RIM_.png" alt="Example figure"  />
+
+We also prove that the augmented time series (the linear combinations) are bounded within some close distance to the original time series.
+However, for many cases, we would like to use the data augmentation to improve downstream learning tasks. For this, we also investigate the relation between learning performance, properties of the time series, and the neural network structure if we use our augmentation on the time series and use all these data to train this nerual network in downstream task.</p>
+<p>The results of downstream task performance improvement is shown here:
+<img loading="lazy" src="/research/RIM/result.png" alt="Example figure"  />
+
+where we show faster convergence and higher accuracy for downstream time series classification task, and we also study time series forecast and Reinforcement learning tasks in our work.</p>
+<p>This work is published in ICLR 2023.</p>
+<hr>
+<h1 id="other-projects">Other projects<a hidden class="anchor" aria-hidden="true" href="#other-projects">#</a></h1>
+<p>I also work on other projects that are not a direct result of my goal from above, but still necessary tools for optimization and machine learning in general:</p>
+<h3 id="QC">Quantum computing reducing systemic risk in financial networks<a hidden class="anchor" aria-hidden="true" href="#QC">#</a></h3>
+<p>In highly connected fnancial networks, the failure of a single or a few institution can cascade into additional
+bank failures:
+<img loading="lazy" src="/research/Quantum/cascade.png" alt="Example figure"  />
+
+This systemic risk can be mitigated by adjusting the loans, holding shares, and other
+liabilities connecting institutions in a way that prevents cascading of failures. We are approaching the
+systemic risk problem by attempting to optimize the connections between the institutions with financially meaningful objective and constraints:
+<img loading="lazy" src="/research/Quantum/optimize.png" alt="Example figure"  />
+
+We notice that the cascade failures first spread through highly connected groups (a module) and then spread between modules, as the connection between banks are the brigde that failure spreads. This intution leads us to the two-stage cascade prevention method, where we would first partition financial networks into modulues (community detection), and then optimize the module sub-network connections individually. In this way, we could<br>
+confine cascade failures from its source and keep the change of connections to a minimum.
+<img loading="lazy" src="/research/Quantum/optimize_2.png" alt="Example figure"  />
+
+We apply quantum annealing as our heuristic for community detection where it can achieve more accurate partitioning with less time complexity. In particular, the modularity maximization is formullated as QUBO, mapped to Pegasus embedding and then solved in D-wave Advantage Quantum Annealer.
+The cascade simulation is mitigated as a result of our method, indicated by delayed phase transition in cascade failures where financial network can withstand higher perturbation without failure:
+<img loading="lazy" src="/research/Quantum/results.png" alt="Example figure"  />
+
+We also demonstrate similar results using real-world data, where we perturb the original network and optimized network with the same level of perturbation, and compare the cascade results. We can see that all the institutions in the original network (top) fail as a result of the perturbation while in the optimized network (bottom) only few institutions fail.
+<img loading="lazy" src="/research/Quantum/real_world.png" alt="Example figure"  />
+</p>
+<p>This work is published in Nature Scientific Report on March, 2023.</p>
+<h3 id="BankGame">Central bank cascade free control<a hidden class="anchor" aria-hidden="true" href="#BankGame">#</a></h3>
+<p>This work is a direct extension from previous work on cascade failure mitigation. Instead of posing change in connectivities between institutions (banks in this case) as a hard constraints on banks, we respect the objective of banks which is maximizing their own profits. Therefore, central bank aims to give incentives or penalties as control signal to the system whose dynamics are given by the zero-sum games formulated as individual banks&rsquo; greedy optimizations.</p>
+<p>We already studied some property of such dynamical system we are trying to control, where for some particular controls we have converged Nash Equalibrium of the low level optimizations (banks), while for some other controls we have osscilation of between equalibriums:
+<img loading="lazy" src="/research/Quantum/Game.png" alt="Example figure"  />
+
+We are now in the stage of learning an optimal control corresponds to cascade-free trajectory of this compicated dynamical system.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://chichengmessi.github.io/">Cheng&#39;s Website</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

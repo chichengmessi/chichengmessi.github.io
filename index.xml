@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Cheng&#39;s Website</title>
+    <link>https://chichengmessi.github.io/</link>
+    <description>Recent content on Cheng&#39;s Website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://chichengmessi.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://chichengmessi.github.io/research/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://chichengmessi.github.io/research/</guid>
+      <description>My Research Ambition I&amp;rsquo;m aiming to achieve the optimal trade-off between theory and learning.
+Design algorithms that benefit both from rigorness of theory and flexibility of ML for different applications from combinatorial optimization to derivative pricing.
+This figure here shows my general research ambition. For any learning task, we can measure the amount of struture or prior knowledge we incorportate in the particular learning method we use, and we put an axis here.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://chichengmessi.github.io/startup/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://chichengmessi.github.io/startup/</guid>
+      <description>DeepAlpha DeepAlpha is a quantitative research firm applying scientific techniques, AI, and Quantum Computing to find patterns in large, noisy real-world financial data sets for making smart decisions. It provides data-driven portfolio management services for subscribed clients. The company was co-founded by an NYU professor and DeepMind ML Engineer.
+Starting from May 2022, I was working in this firm as an Quantitative Researcher and Software Developer. I developed algorithms for portfolio management based on finanical-principle-aware Reinforcement learning, which became a core part of company&amp;rsquo;s own code base.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://chichengmessi.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://chichengmessi.github.io/about/</guid>
+      <description>I am a skilled researcher and software developer with experience in machine learning, reinforcement learning, and quantitative finance. My achievements include using RL to speed up commercial optimization solvers by 22%, developing ML algorithms for physical system control that raised $50,000 for an irrigation project in India funded by IC-IMPACTS and DST, and developed products for a FinTech firm that provides data-driven portfolio management services. My research during master degree at U of T led to two publications in top level ML conferences (NeurIPS and ICLR) and one publication in top level journal (Nature).</description>
+    </item>
+    
+    <item>
+      <title>Life</title>
+      <link>https://chichengmessi.github.io/life/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://chichengmessi.github.io/life/</guid>
+      <description>I have always been passionate about exploring the world, both on and off the field.
+Soccer has been a huge part of my life for as long as I can remember, and I love nothing more than getting out on the pitch and playing with friends. I also fell in love with skiing and snowboarding after I came to Canada. Besides playing sports, I also like to travel. Whether it&amp;rsquo;s exploring a new city or seeing nature, I&amp;rsquo;m always up for a challenge and love experiencing new things.</description>
+    </item>
+    
+    <item>
+      <title>Publications</title>
+      <link>https://chichengmessi.github.io/publish/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://chichengmessi.github.io/publish/</guid>
+      <description>Publications A Deep Reinforcement learning framework for Column Generation
+NeurIPS 2022 Collaborators: Professor Elias Khalil (U of T), Professor Amine Aboussalah (NYU) Contributions: Main idea, all coding, writing, first author To paper Detail Quantum computing reduces systemic risk in financial networks
+Nature Scientific Report Collaborators: Professor Amine Aboussalah (NYU), Professor Chi-Guhn Lee (U of T) Contributions: Derivation of MILP optimization and Financial network modularity, most of the coding, writing, co-author To paper Detail Recursive Time Series Data Augmentation</description>
+    </item>
+    
+    <item>
+      <title>Work Experience</title>
+      <link>https://chichengmessi.github.io/work/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://chichengmessi.github.io/work/</guid>
+      <description>C-MORE / DORL, Research Assistant (2021.9 - current) During my master degree, I worked as a research assistant in C-MORE / DORL laboratory led by professor Chi-Guhn Lee at U of T.
+Here is some busy but cherishable moments during my time here in this lab: My work focuses on application of Reinforcement learning to physical system control, finance and combinatorial optimizations (please see research), and my research in around 2 years in this lab led to these established work.</description>
+    </item>
+    
+  </channel>
+</rss>
