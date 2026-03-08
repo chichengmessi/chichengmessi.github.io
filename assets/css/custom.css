@@ -1,0 +1,292 @@
+/* Custom aesthetic improvements */
+
+/* Better typography with Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Subtle page fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+main.main {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Header: glassmorphism effect */
+.header {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.85);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: box-shadow 0.3s ease;
+}
+
+.dark .header {
+    background: rgba(29, 30, 32, 0.88);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Logo hover */
+.logo a {
+    transition: color 0.2s ease;
+}
+
+.logo a:hover {
+    color: var(--primary);
+    opacity: 0.8;
+}
+
+/* Nav links: smooth underline animation */
+#menu a {
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+#menu a span::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+}
+
+#menu a:hover span::after,
+#menu a span.active::after {
+    width: 100%;
+}
+
+#menu .active {
+    border-bottom: none;
+}
+
+/* Profile section polish */
+.profile .profile_inner {
+    padding: 2rem 0;
+}
+
+.profile img {
+    border-radius: 50%;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 3px solid var(--border);
+}
+
+.profile img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+}
+
+.dark .profile img {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.dark .profile img:hover {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+.profile .profile_inner span {
+    font-size: 1.15rem;
+    color: var(--secondary);
+    letter-spacing: 0.01em;
+}
+
+/* Social icons polish */
+.social-icons {
+    padding: 16px 0;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--code-bg);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border);
+}
+
+.dark .social-icons a {
+    background: var(--entry);
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    background: var(--primary);
+    color: var(--theme);
+    border-color: var(--primary);
+}
+
+.dark .social-icons a:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.social-icons a:hover svg {
+    stroke: var(--theme);
+}
+
+.social-icons a svg {
+    height: 20px;
+    width: 20px;
+    transition: stroke 0.3s ease;
+}
+
+.social-icons a:not(:last-of-type) {
+    margin-inline-end: 10px;
+}
+
+/* Article content pages */
+.post-single {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.post-header .post-title {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.post-content {
+    line-height: 1.75;
+    letter-spacing: 0.01em;
+}
+
+.post-content p {
+    margin-bottom: 1.25em;
+}
+
+/* Better image styling in posts */
+.post-content img {
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+}
+
+.dark .post-content img {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.post-content img:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Links in content */
+.post-content a {
+    color: var(--primary);
+    box-shadow: 0 1px 0 var(--primary);
+    transition: box-shadow 0.2s ease, opacity 0.2s ease;
+}
+
+.post-content a:hover {
+    opacity: 0.75;
+    box-shadow: 0 2px 0 var(--primary);
+}
+
+/* Better blockquotes */
+.post-content blockquote {
+    border-inline-start: 3px solid var(--secondary);
+    padding: 0.5em 1.2em;
+    background: var(--code-bg);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-style: italic;
+}
+
+.dark .post-content blockquote {
+    background: var(--entry);
+}
+
+/* Code blocks */
+.post-content pre code {
+    border-radius: 10px;
+    font-size: 0.85em;
+}
+
+/* Footer polish */
+.footer {
+    border-top: 1px solid var(--border);
+    font-size: 13px;
+    letter-spacing: 0.01em;
+    opacity: 0.85;
+}
+
+/* Theme toggle button */
+button#theme-toggle {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+button#theme-toggle:hover {
+    background: var(--code-bg);
+    transform: rotate(15deg);
+}
+
+/* Go to top button */
+.top-link {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: visibility 0.5s, opacity 0.8s linear, transform 0.2s ease;
+}
+
+.top-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Smooth scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+    background: rgba(30, 30, 30, 0.15);
+}
+
+.dark ::selection {
+    background: rgba(218, 218, 219, 0.2);
+}
+
+/* MathJax / KaTeX styling improvements if present */
+.post-content .math,
+.post-content mjx-container {
+    overflow-x: auto;
+    padding: 4px 0;
+}
+
+/* Responsive tweaks */
+@media screen and (max-width: 768px) {
+    .social-icons a {
+        width: 40px;
+        height: 40px;
+    }
+
+    .social-icons a svg {
+        height: 18px;
+        width: 18px;
+    }
+
+    .profile .profile_inner span {
+        font-size: 1.05rem;
+    }
+}
