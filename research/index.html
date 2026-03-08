@@ -461,18 +461,33 @@ We are now in the stage of learning an optimal control corresponds to cascade-fr
         });
     });
 
-    // Re-scroll to hash anchor after all images load (fixes cross-page anchor links
-    // being offset by lazy-loaded images changing the page height)
+    // Fix cross-page anchor links being offset by lazy-loaded images.
+    // Lazy images load after initial scroll, shifting the layout.
+    // We repeatedly re-scroll to the target as images load in.
     if (window.location.hash) {
-        window.addEventListener("load", function () {
+        (function () {
             var id = decodeURIComponent(window.location.hash.substring(1));
             var target = document.querySelector(`[id='${id}']`);
-            if (target) {
+            if (!target) return;
+
+            // Observe all lazy images and re-scroll when they load
+            var imgs = document.querySelectorAll('img[loading="lazy"]');
+            imgs.forEach(function (img) {
+                if (!img.complete) {
+                    img.addEventListener("load", function () {
+                        target.scrollIntoView();
+                    });
+                }
+            });
+
+            // Also re-scroll at key moments after page load
+            var delays = [100, 300, 600, 1200, 2500];
+            delays.forEach(function (ms) {
                 setTimeout(function () {
-                    target.scrollIntoView({ behavior: "smooth" });
-                }, 100);
-            }
-        });
+                    target.scrollIntoView();
+                }, ms);
+            });
+        })();
     }
 
 </script>
