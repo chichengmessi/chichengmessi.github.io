@@ -226,6 +226,10 @@ This figure here shows my general research ambition. For any learning task, we c
                 <li>
                     <a href="#RIM" aria-label="Recursive time series data augmentation">Recursive time series data augmentation</a></li>
                 <li>
+                    <a href="#QNODE" aria-label="Quantum neural ODE for option pricing surface evolution">Quantum neural ODE for option pricing surface evolution</a></li>
+                <li>
+                    <a href="#DeepTabular" aria-label="Inductive-bias-aware deep tabular learning">Inductive-bias-aware deep tabular learning</a></li>
+                <li>
                     <a href="#other-projects" aria-label="Other projects">Other projects</a><ul>
                         <ul>
                         
@@ -303,6 +307,58 @@ However, for many cases, we would like to use the data augmentation to improve d
 
 where we show faster convergence and higher accuracy for downstream time series classification task, and we also study time series forecast and Reinforcement learning tasks in our work.</p>
 <p>This work is published in ICLR 2023.</p>
+<h1 id="QNODE">Quantum neural ODE for option pricing surface evolution<a hidden class="anchor" aria-hidden="true" href="#QNODE">#</a></h1>
+<p>For computing the time evolution of option pricing surfaces, &ldquo;pure learning&rdquo; method corresponds to training a neural network to directly predict the pricing surface at future times from historical data, and a &ldquo;pure theory&rdquo; method corresponds to specifying a stochastic process for the underlying asset (e.g. geometric Brownian motion) and analytically solving the resulting PDE (e.g. Black-Scholes PDE) for the pricing surface. By trying to achieve an optimal trade-off between learning and theory, I develop a method that exploits a deep structural analogy: the time evolution of the option pricing surface is governed by a PDE, and the time evolution of a quantum state is also governed by a PDE &mdash; the Schr&ouml;dinger equation. This means we can use parameterized quantum circuits to <em>analog compute</em> the pricing surface evolution.</p>
+<p>The key insight is the following. In the &ldquo;pure theory&rdquo; approach, given an assumed underlying process, the option price V(S, t) satisfies a pricing PDE of the form:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&part;V/&part;t + &frac12;&sigma;&sup2;S&sup2; &part;&sup2;V/&part;S&sup2; + rS &part;V/&part;S &minus; rV = 0</p>
+<p>Meanwhile, a quantum state |&psi;(t)&rang; evolves under the Schr&ouml;dinger equation:</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;i&hbar; d|&psi;&rang;/dt = H(&#952;)|&psi;&rang;</p>
+<p>where H(&#952;) is the Hamiltonian of a parameterized quantum circuit. If we encode the pricing surface into a quantum state |&psi;&rang; &cong; V(S, t), then evolving the quantum state under an appropriately chosen Hamiltonian is equivalent to evolving the pricing surface under its PDE &mdash; but without ever needing to specify the underlying asset process explicitly.</p>
+<p>The structure / prior knowledge I use to achieve the trade-off is the fact that the pricing surface evolution is continuous and PDE-governed, which can be mapped onto quantum state evolution. Instead of assuming a specific process model (&ldquo;pure theory&rdquo;) or learning everything from scratch (&ldquo;pure learning&rdquo;), we let a neural ODE anneal the quantum circuit parameters &#952;(t) so that the resulting quantum state evolution matches observed pricing surface dynamics.</p>
+<p>Concretely, the training algorithm works as follows:
+<img loading="lazy" src="/quantum_circuit_project/training_algo.png" alt="Quantum Neural ODE Training Algorithm"  />
+</p>
+<p>At each epoch, we randomly sample time points from [0, T] and use the neural ODE to evolve the initial circuit parameters &#952;<sub>0</sub> to parameters at each sampled time: d&#952;/dt = f<sub>&#966;</sub>(&#952;(t)), where f<sub>&#966;</sub> is a neural network. For each evolved &#952;<sub>t</sub>, we construct the parameterized quantum circuit unitary U(&#952;<sub>t</sub>), apply it to the initial quantum state &psi;<sub>0</sub> to get the evolved state &psi;<sub>t</sub> = U(&#952;<sub>t</sub>)&psi;<sub>0</sub>, and then project the evolved state onto encoding basis states. The projected amplitudes represent the pricing surface at time t. We compute the MSE loss against target option prices obtained from Monte Carlo simulation or PDE solvers, and train the neural ODE parameters &#966; end-to-end using adjoint backpropagation through both the quantum circuit and the ODE solver.</p>
+<p>We test this method on two pricing models: Black-Scholes with constant volatility (&sigma; = 0.2) and a Local Volatility model where volatility varies linearly from 0.2 to 0.48. The results of fitting the pricing surface evolution in Qiskit simulation are shown below:
+<img loading="lazy" src="/quantum_circuit_project/surfaces.png" alt="Pricing surface fit results for BS and LV models"  />
+</p>
+<p>The 3D surfaces show quantum state probabilities (encoding the option prices) over time (TTM axis) and basis states (encoding different strike/moneyness levels). The quantum circuit successfully learns to evolve the initial state so that the resulting probability distribution matches the target pricing surface across all time points, for both the constant-vol BS model and the more complex Local Volatility model.</p>
+<p>A key advantage of this approach is that the learned circuit parameter dynamics d&#952;/dt = f<sub>*</sub>(&#952;(t)) reveal interpretable structure about the underlying pricing model. The figure below shows the evolution of quantum circuit parameters over time for both BS and LV models:
+<img loading="lazy" src="/quantum_circuit_project/circuit_params_dynamics.png" alt="Quantum circuit parameter dynamics for BS and LV"  />
+</p>
+<p>For the BS model (constant vol), the parameter trajectories are smooth and diverge gradually &mdash; reflecting the simple, stationary dynamics of the underlying process. For the LV model (time-varying vol), the parameter trajectories exhibit more complex, non-monotonic behavior, reflecting the richer dynamics of a volatility surface that changes with time. The neural ODE autonomously discovers these different dynamical regimes without being told which pricing model generated the data.</p>
+<p>We can further examine the angle-encoded dynamics of individual circuit parameters:
+<img loading="lazy" src="/quantum_circuit_project/circuit_params_dynamics2.png" alt="Angle-encoded parameter dynamics for BS and LV"  />
+</p>
+<p>The angle-encoded representations show how individual rotation gate parameters in the quantum circuit evolve over time. The BS model produces smooth, periodic trajectories, while the LV model produces more irregular patterns &mdash; the neural ODE adapts the circuit parameter evolution to capture the distinct dynamical signatures of each pricing model.</p>
+<p>This achieves the trade-off: we incorporate the structural prior that pricing surfaces evolve continuously under PDE dynamics (via the quantum state evolution under parameterized unitaries), but we do not need to assume any specific stochastic process &mdash; the neural ODE learns the correct circuit parameter trajectory from target prices. The quantum circuit provides a physically motivated computational substrate for the evolution, while the neural ODE provides the flexibility to adapt to different pricing dynamics, from simple Black-Scholes to complex Local Volatility models.</p>
+<p>This work was done during my internship at Bloomberg.</p>
+<h1 id="DeepTabular">Inductive-bias-aware deep tabular learning<a hidden class="anchor" aria-hidden="true" href="#DeepTabular">#</a></h1>
+<p>For learning on tabular data, &ldquo;pure learning&rdquo; method corresponds to using a generic deep neural network (e.g. MLP) that treats the input as a flat vector and learns all feature interactions from scratch, and a &ldquo;pure theory&rdquo; method corresponds to hand-crafted feature engineering combined with simple models (linear or tree-based) that make strong structural assumptions about the data. By trying to achieve an optimal trade-off between learning and theory, I develop a non-linear LassoNet architecture that respects the known inductive biases of tabular data while retaining the representational power of deep learning. The structure / prior knowledge I use to achieve such trade-off is the set of inductive biases specific to tabular data.</p>
+<p>Tabular data has well-known inductive biases that differ fundamentally from images or text:</p>
+<ol>
+<li><strong>Feature heterogeneity</strong>: each feature has its own semantic meaning, scale, and distribution &mdash; unlike pixels or tokens which share a common representation space.</li>
+<li><strong>Feature sparsity</strong>: not all features are relevant, and the model should be able to select or suppress features rather than being forced to use all of them.</li>
+<li><strong>Irregular feature interactions</strong>: interactions between features are not spatially local (as in images) or sequential (as in text), but can be arbitrary and sparse.</li>
+</ol>
+<p>Standard deep learning architectures ignore these biases. MLPs treat features as interchangeable dimensions in a flat vector. Transformers applied naively to tabular data create attention over features but do not enforce sparsity or heterogeneity. Tree-based methods (&ldquo;pure theory&rdquo; side) naturally respect these biases through axis-aligned splits and feature selection, which is why they remain dominant on many tabular benchmarks.</p>
+<p>Our architecture, NonlinearLasso, respects all three inductive biases through a three-module design:
+<img loading="lazy" src="/nonlinear_lasso_project/module_structure.png" alt="NonlinearLasso architecture: per-feature embedding, skip module, and main module with hierarchy constraint"  />
+</p>
+<p>The architecture consists of three modules stacked bottom-to-top:</p>
+<ol>
+<li><strong>Per-Feature Embedding Module NN<sub>&#952;</sub>(x)</strong> (bottom): each feature is independently embedded using its own ResNet block. Numerical features are first discretized into bins (e.g. Bins(x) = [0, 0, 1, 0, 1]) and categorical features are one-hot encoded, then each feature group passes through a dedicated ResNet followed by BatchNorm. This respects feature heterogeneity &mdash; each feature gets its own learned non-linear representation with its own parameters, analogous to how each feature in a tree model is treated independently at each split. The per-feature ResNet embeddings produce representations z = {z<sub>1</sub>, &hellip;, z<sub>p</sub>} that are passed to the upper modules.</li>
+<li><strong>Main Module NN<sub>w</sub>(z)</strong> (top right): the embedded features are passed through a deep network that learns non-linear cross-feature interactions. This is the &ldquo;learning&rdquo; component that gives the model representational power beyond what tree-based methods can achieve.</li>
+<li><strong>Skip Module LS<sub>&#946;</sub>(z)</strong> (top left): a linear skip connection from the embedded features directly to the output, with coefficients &#946;<sub>j</sub> for each feature. Crucially, there is a <strong>hierarchy constraint</strong> between the skip and main modules: the main module&rsquo;s use of feature j is constrained by the skip module&rsquo;s coefficient for that feature. Formally, ||W<sub>j</sub><sup>(1)</sup>||<sub>&infin;</sub> &le; M |&#946;<sub>j</sub>|, where W<sub>j</sub><sup>(1)</sup> is the main module&rsquo;s first-layer weight for feature j, &#946;<sub>j</sub> is the skip connection coefficient, and M is a hierarchy parameter. If &#946;<sub>j</sub> = 0, the feature is entirely removed from both the linear and non-linear paths &mdash; enforcing feature sparsity in a principled way.</li>
+</ol>
+<p>The final prediction is: &ycirc; = LS<sub>&#946;</sub>(z) + NN<sub>w</sub>(z), combining the linear skip path with the deep non-linear path under the hierarchy constraint.</p>
+<p>The key difference from the original LassoNet is that our model is non-linear in its treatment of feature embeddings and interactions. The per-feature ResNet embeddings and the deep main module allow the model to learn complex, non-linear feature transformations and cross-feature interactions, while the LassoNet-style hierarchy constraint ensures that the model still performs global feature selection and maintains interpretability.</p>
+<p>We benchmark NonlinearLasso against a comprehensive set of tree-based models (CatBoost, XGBoost, LightGBM, RandomForest, DecisionTree), deep tabular models (NODE, DANet, SAINT, TabNet, TabTransformer, FTTransformer, rtdl_ResNet, rtdl_MLP, STG, VIME, DeepFM), and classical methods (KNN, SVM, LinearModel) across multiple tabular datasets:
+<img loading="lazy" src="/nonlinear_lasso_project/performance_comparison.png" alt="Average loss per algorithm across datasets"  />
+</p>
+<p>NonlinearLasso achieves the <strong>lowest average loss (0.28 &plusmn; 0.15)</strong> across all datasets, substantially outperforming both tree-based champions like LightGBM (0.43 &plusmn; 0.20) and XGBoost (0.93 &plusmn; 0.22), as well as all deep tabular competitors including SAINT (0.45 &plusmn; 0.31), TabTransformer (0.62 &plusmn; 0.39), FTTransformer (0.72 &plusmn; 0.22), and NODE (0.94 &plusmn; 0.45). Notably, NonlinearLasso also has the <strong>tightest variance</strong>, indicating consistent performance across diverse tabular datasets rather than excelling on some and failing on others.</p>
+<p>This architecture achieves the optimal trade-off: we incorporate the structural priors that tree-based models use (feature independence via per-feature embedding, sparsity via hierarchy-constrained feature selection, heterogeneous treatment of features via dedicated ResNets) into a deep learning architecture, without sacrificing the representational power that comes from learned non-linear embeddings and deep cross-feature interactions. The result is a model that consistently outperforms both sides of the prior-modelling axis.</p>
+<p>This work was done during my internship at Borealis AI (RBC). <a href="https://openreview.net/forum?id=RWtV2bOxpz">To paper</a></p>
 <hr>
 <h1 id="other-projects">Other projects<a hidden class="anchor" aria-hidden="true" href="#other-projects">#</a></h1>
 <p>I also work on other projects that are not a direct result of my goal from above, but still necessary tools for optimization and machine learning in general:</p>
@@ -346,7 +402,7 @@ We are now in the stage of learning an optimal control corresponds to cascade-fr
     </main>
     
 <footer class="footer">
-    <span>&copy; 2023 <a href="https://chichengmessi.github.io/">Cheng&#39;s Website</a></span>
+    <span>&copy; 2026 <a href="https://chichengmessi.github.io/">Cheng&#39;s Website</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
