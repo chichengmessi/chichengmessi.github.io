@@ -421,6 +421,7 @@ button#theme-toggle:hover {
     font-weight: 700;
     letter-spacing: -0.025em;
     color: var(--primary);
+    scroll-margin-top: 5rem;
 }
 
 .post-content h2 {
