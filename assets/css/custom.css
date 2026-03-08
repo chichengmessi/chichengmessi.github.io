@@ -755,6 +755,49 @@ button#theme-toggle:hover {
     }
 }
 
+/* ---- Publication entries ---- */
+.pub-entry {
+    padding: 1.4rem 1.6rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--gradient-subtle);
+    transition: border-color var(--transition-med), box-shadow var(--transition-med);
+}
+
+.pub-entry:hover {
+    border-color: var(--accent-glow);
+    box-shadow: var(--shadow-md);
+}
+
+.pub-entry h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: -0.02em;
+    color: var(--primary);
+}
+
+.pub-entry p {
+    margin-bottom: 0.5em;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+.pub-entry p:last-child {
+    margin-bottom: 0;
+}
+
+.pub-links {
+    margin-top: 0.4rem !important;
+}
+
+.pub-links a {
+    font-weight: 600;
+    font-size: 0.88em;
+    letter-spacing: 0.01em;
+}
+
 /* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
