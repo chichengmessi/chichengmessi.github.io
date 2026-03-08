@@ -1,5 +1,5 @@
 /* ============================================
-   Premium aesthetic overhaul
+   Premium aesthetic overhaul v2
    ============================================ */
 
 /* Fonts */
@@ -22,9 +22,11 @@
     --radius-sm: 6px;
     --radius-md: 12px;
     --radius-lg: 20px;
+    --radius-xl: 28px;
     --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-med: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    --noise: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
 }
 
 .dark {
@@ -53,6 +55,18 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Subtle noise texture overlay for depth */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: var(--noise);
+    background-size: 256px 256px;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+}
+
 /* Subtle animated gradient background for homepage */
 body.list {
     background: var(--code-bg);
@@ -67,19 +81,19 @@ body.list::before {
     width: 200%;
     height: 200%;
     background:
-        radial-gradient(ellipse at 20% 50%, rgba(79, 70, 229, 0.04) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 20%, rgba(124, 58, 237, 0.03) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 80%, rgba(236, 72, 153, 0.02) 0%, transparent 50%);
-    animation: bgShift 20s ease-in-out infinite alternate;
+        radial-gradient(ellipse at 20% 50%, rgba(79, 70, 229, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(124, 58, 237, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(236, 72, 153, 0.03) 0%, transparent 50%);
+    animation: bgShift 25s ease-in-out infinite alternate;
     pointer-events: none;
     z-index: -1;
 }
 
 .dark.list::before {
     background:
-        radial-gradient(ellipse at 20% 50%, rgba(129, 140, 248, 0.04) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 20%, rgba(124, 58, 237, 0.03) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 80%, rgba(236, 72, 153, 0.02) 0%, transparent 50%);
+        radial-gradient(ellipse at 20% 50%, rgba(129, 140, 248, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(124, 58, 237, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(236, 72, 153, 0.03) 0%, transparent 50%);
 }
 
 @keyframes bgShift {
@@ -89,7 +103,7 @@ body.list::before {
 
 /* ---- Animations ---- */
 @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
+    from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
@@ -99,13 +113,23 @@ body.list::before {
 }
 
 @keyframes scaleIn {
-    from { opacity: 0; transform: scale(0.95); }
+    from { opacity: 0; transform: scale(0.92); }
     to { opacity: 1; transform: scale(1); }
 }
 
 @keyframes shimmer {
     0% { background-position: -200% center; }
     100% { background-position: 200% center; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 20px var(--accent-glow), var(--shadow-lg); }
+    50% { box-shadow: 0 0 40px var(--accent-glow), var(--shadow-xl); }
 }
 
 main.main {
@@ -120,10 +144,10 @@ main.main {
 
 /* ---- Header ---- */
 .header {
-    backdrop-filter: saturate(180%) blur(16px);
-    -webkit-backdrop-filter: saturate(180%) blur(16px);
-    background: rgba(255, 255, 255, 0.78);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    background: rgba(255, 255, 255, 0.72);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -131,14 +155,15 @@ main.main {
 }
 
 .dark .header {
-    background: rgba(29, 30, 32, 0.82);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgba(29, 30, 32, 0.78);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Logo */
 .logo a {
     font-weight: 800;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
+    font-size: 1.1em;
     background: var(--gradient-accent);
     -webkit-background-clip: text;
     background-clip: text;
@@ -151,15 +176,25 @@ main.main {
 }
 
 /* Nav links */
+#menu {
+    gap: 2px;
+}
+
 #menu a {
     position: relative;
     transition: color var(--transition-fast);
-    padding: 4px 0;
+    padding: 6px 12px;
+    border-radius: var(--radius-sm);
+}
+
+#menu a:hover {
+    background: var(--accent-subtle);
 }
 
 #menu a span {
     position: relative;
     font-weight: 500;
+    font-size: 0.9em;
 }
 
 #menu a span::after {
@@ -206,12 +241,29 @@ button#theme-toggle:hover {
 
 /* ---- Profile / Hero ---- */
 .profile {
-    padding: 1rem 0;
+    padding: 2rem 0 1rem;
+    display: flex;
+    justify-content: center;
 }
 
 .profile .profile_inner {
-    padding: 3rem 0 2rem;
+    padding: 3.5rem 3rem 2.5rem;
     position: relative;
+    text-align: center;
+    background: var(--surface);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    max-width: 480px;
+    width: 100%;
+    transition: box-shadow var(--transition-med), transform var(--transition-med);
+}
+
+.profile .profile_inner:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-2px);
 }
 
 /* Avatar with gradient ring */
@@ -223,6 +275,8 @@ button#theme-toggle:hover {
     box-shadow: var(--shadow-lg);
     transition: transform var(--transition-med), box-shadow var(--transition-med);
     animation: scaleIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 140px !important;
+    height: 140px !important;
 }
 
 .profile img:hover {
@@ -233,20 +287,20 @@ button#theme-toggle:hover {
 /* Welcome text */
 .profile .profile_inner > span {
     display: block;
-    font-size: 1.4rem;
-    font-weight: 600;
+    font-size: 1.5rem;
+    font-weight: 700;
     color: var(--primary);
-    letter-spacing: -0.02em;
-    margin-top: 0.5rem;
+    letter-spacing: -0.03em;
+    margin-top: 1rem;
     animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
 }
 
 /* ---- Social Icons ---- */
 .social-icons {
-    padding: 20px 0;
+    padding: 24px 0 8px;
     display: flex;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
     animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
 }
 
@@ -254,9 +308,9 @@ button#theme-toggle:hover {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: var(--radius-md);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
     background: var(--surface);
     backdrop-filter: blur(8px);
     border: 1px solid var(--border);
@@ -265,8 +319,8 @@ button#theme-toggle:hover {
 }
 
 .social-icons a svg {
-    height: 20px;
-    width: 20px;
+    height: 18px;
+    width: 18px;
     transition: all var(--transition-med);
 }
 
@@ -275,28 +329,28 @@ button#theme-toggle:hover {
     background: #0077b5;
     border-color: #0077b5;
     box-shadow: 0 8px 24px rgba(0, 119, 181, 0.3);
-    transform: translateY(-4px);
+    transform: translateY(-4px) scale(1.05);
 }
 
 .social-icons a[title="Googlescholar"]:hover {
     background: #4285f4;
     border-color: #4285f4;
     box-shadow: 0 8px 24px rgba(66, 133, 244, 0.3);
-    transform: translateY(-4px);
+    transform: translateY(-4px) scale(1.05);
 }
 
 .social-icons a[title="CV"]:hover {
     background: #e74c3c;
     border-color: #e74c3c;
     box-shadow: 0 8px 24px rgba(231, 76, 60, 0.3);
-    transform: translateY(-4px);
+    transform: translateY(-4px) scale(1.05);
 }
 
 .social-icons a[title="GitHub"]:hover {
     background: #333;
     border-color: #333;
     box-shadow: 0 8px 24px rgba(51, 51, 51, 0.3);
-    transform: translateY(-4px);
+    transform: translateY(-4px) scale(1.05);
 }
 
 .dark .social-icons a[title="GitHub"]:hover {
@@ -318,11 +372,29 @@ button#theme-toggle:hover {
 }
 
 /* Page title */
+.post-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+}
+
+.post-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 80px;
+    height: 2px;
+    background: var(--gradient-accent);
+    border-radius: 2px;
+}
+
 .post-header .post-title {
     font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1.15;
-    font-size: 2.5rem;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    font-size: 2.8rem;
     background: var(--gradient-accent);
     -webkit-background-clip: text;
     background-clip: text;
@@ -347,20 +419,14 @@ button#theme-toggle:hover {
 .post-content h3,
 .post-content h4 {
     font-weight: 700;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
     color: var(--primary);
 }
 
 .post-content h2 {
     font-size: 1.6rem;
-    margin: 2.5rem auto 1.2rem;
-    padding-bottom: 0.4rem;
-    border-bottom: 2px solid var(--accent-subtle);
-    display: inline-block;
-}
-
-/* Fix h2 to be block-level but with inline border */
-.post-content h2 {
+    margin: 3rem auto 1.2rem;
+    padding-bottom: 0.5rem;
     display: block;
     position: relative;
 }
@@ -368,12 +434,39 @@ button#theme-toggle:hover {
 .post-content h2::after {
     content: '';
     position: absolute;
-    bottom: -2px;
+    bottom: 0;
     left: 0;
-    width: 60px;
+    width: 48px;
     height: 3px;
     background: var(--gradient-accent);
     border-radius: 3px;
+}
+
+/* H3 — timeline-style for work experience sections */
+.post-content h3 {
+    font-size: 1.25rem;
+    margin: 2.5rem 0 1rem;
+    padding: 0.8rem 0 0.8rem 1.2rem;
+    border-left: 3px solid var(--accent);
+    position: relative;
+    transition: border-color var(--transition-med);
+}
+
+.post-content h3::before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px var(--theme);
+}
+
+.post-content h3 a.anchor {
+    display: none;
 }
 
 /* Lists */
@@ -415,7 +508,7 @@ button#theme-toggle:hover {
     color: var(--accent);
     text-decoration: none;
     box-shadow: none;
-    border-bottom: 1px solid transparent;
+    border-bottom: 1.5px solid rgba(79, 70, 229, 0.2);
     transition: border-color var(--transition-fast), color var(--transition-fast);
     font-weight: 500;
 }
@@ -426,23 +519,34 @@ button#theme-toggle:hover {
     box-shadow: none;
 }
 
-/* Images */
+.dark .post-content a {
+    border-bottom-color: rgba(129, 140, 248, 0.2);
+}
+
+.dark .post-content a:hover {
+    border-bottom-color: var(--accent);
+}
+
+/* Images — elegant figure treatment */
 .post-content img {
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
-    transition: all var(--transition-med);
-    margin: 1.5rem auto;
+    transition: all var(--transition-slow);
+    margin: 2rem auto;
+    display: block;
+    border: 1px solid var(--border);
 }
 
 .post-content img:hover {
-    box-shadow: var(--shadow-lg);
-    transform: scale(1.01);
+    box-shadow: var(--shadow-xl);
+    transform: scale(1.005);
+    border-color: var(--accent-glow);
 }
 
 /* Blockquotes */
 .post-content blockquote {
     border-inline-start: 3px solid var(--accent);
-    padding: 1em 1.5em;
+    padding: 1.2em 1.6em;
     background: var(--gradient-subtle);
     border-radius: 0 var(--radius-md) var(--radius-md) 0;
     font-style: italic;
@@ -483,7 +587,7 @@ button#theme-toggle:hover {
 
 /* ---- Cards for post entries ---- */
 .post-entry {
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     border: 1px solid var(--border);
     background: var(--surface);
     backdrop-filter: blur(8px);
@@ -494,7 +598,7 @@ button#theme-toggle:hover {
 .post-entry:hover {
     box-shadow: var(--shadow-lg);
     border-color: var(--accent-glow);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
 }
 
 .post-entry:active {
@@ -506,21 +610,23 @@ button#theme-toggle:hover {
     border-top: 1px solid var(--border);
     font-size: 13px;
     letter-spacing: 0.01em;
-    opacity: 0.7;
+    opacity: 0.5;
     transition: opacity var(--transition-med);
+    padding: 2rem 0;
 }
 
 .footer:hover {
-    opacity: 1;
+    opacity: 0.8;
 }
 
 .footer a {
     border-bottom: 1px solid transparent;
-    transition: border-color var(--transition-fast);
+    transition: border-color var(--transition-fast), color var(--transition-fast);
 }
 
 .footer a:hover {
     border-bottom-color: var(--secondary);
+    color: var(--accent);
 }
 
 /* ---- Top Link ---- */
@@ -531,6 +637,9 @@ button#theme-toggle:hover {
     box-shadow: 0 4px 16px var(--accent-glow);
     transition: visibility 0.5s, opacity 0.8s linear, transform var(--transition-fast), box-shadow var(--transition-fast);
     border: none;
+    border-radius: 50% !important;
+    width: 44px;
+    height: 44px;
 }
 
 .top-link svg {
@@ -576,7 +685,7 @@ button#theme-toggle:hover {
 
 /* ---- Scrollbar ---- */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -585,7 +694,7 @@ button#theme-toggle:hover {
 
 ::-webkit-scrollbar-thumb {
     background: var(--tertiary);
-    border: 3px solid var(--theme);
+    border: 2px solid var(--theme);
     border-radius: 99px;
 }
 
@@ -599,8 +708,19 @@ button#theme-toggle:hover {
 
 /* ---- Responsive ---- */
 @media screen and (max-width: 768px) {
+    .profile .profile_inner {
+        padding: 2.5rem 1.5rem 2rem;
+        margin: 0 1rem;
+        border-radius: var(--radius-lg);
+    }
+
     .profile .profile_inner > span {
-        font-size: 1.2rem;
+        font-size: 1.25rem;
+    }
+
+    .profile img {
+        width: 120px !important;
+        height: 120px !important;
     }
 
     .social-icons a {
@@ -609,8 +729,8 @@ button#theme-toggle:hover {
     }
 
     .social-icons a svg {
-        height: 18px;
-        width: 18px;
+        height: 16px;
+        width: 16px;
     }
 
     .post-header .post-title {
@@ -623,6 +743,15 @@ button#theme-toggle:hover {
 
     .post-content h2 {
         font-size: 1.35rem;
+    }
+
+    .post-content h3 {
+        font-size: 1.1rem;
+    }
+
+    .post-content img {
+        border-radius: var(--radius-md);
+        margin: 1.5rem auto;
     }
 }
 
