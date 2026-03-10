@@ -339,6 +339,8 @@ $$</p>
 \frac{d\theta}{d\tau} = f_\phi(\theta, \tau)
 $$</p>
 <p>That gives a single continuous trajectory \(\theta(\tau)\), which can be evaluated at any maturity.</p>
+<p>What the Neural ODE adds specifically is continuity. Without it, we would just learn one circuit for \(\tau = 0.1\), another for \(\tau = 0.5\), and another for \(\tau = 1.0\). With the Neural ODE, we instead learn a law of motion \(\tau \mapsto \theta(\tau)\).</p>
+<p>That means the model is asserting that there is one underlying dynamical mechanism generating the whole family of pricing surfaces across maturity. In that sense, the Neural ODE is doing more than interpolation: it is the object that makes the identification of these different notions of time feel principled.</p>
 <p>In the ideal picture, these are all the same time variable:</p>
 <p>$$
 \text{option surface evolution time}
@@ -370,6 +372,8 @@ $$</p>
 </p>
 <p>The angle-encoded representations show how individual rotation gate parameters in the quantum circuit evolve over time. The BS model produces smooth, periodic trajectories, while the LV model produces more irregular patterns &mdash; the neural ODE adapts the circuit parameter evolution to capture the distinct dynamical signatures of each pricing model.</p>
 <p>This achieves the trade-off: we incorporate the structural prior that pricing surfaces evolve continuously under PDE dynamics (via the quantum state evolution under parameterized unitaries), but we do not need to assume any specific stochastic process &mdash; the neural ODE learns the correct circuit parameter trajectory from target prices. The quantum circuit provides a physically motivated computational substrate for the evolution, while the neural ODE provides the flexibility to adapt to different pricing dynamics, from simple Black-Scholes to complex Local Volatility models.</p>
+<p>The deeper point is that this four-way identification of time is asking whether there exists a time-dependent Hamiltonian \(H(\tau)\) whose quantum evolution reproduces the option-surface dynamics in the measurement basis. If such a mapping exists, then the learned circuit trajectory \(U(\theta(\tau))\) is a discrete, trainable approximation to that generator.</p>
+<p>In that sense, the Neural ODE is the bridge that empirically discovers a correspondence between financial diffusion dynamics and quantum unitary dynamics. The learned \(\theta(\tau)\) trajectory becomes the translation layer between the two.</p>
 <p>This work was done during my internship at Bloomberg.</p>
 <h1 id="DeepTabular">Inductive-bias-aware deep tabular learning<a hidden class="anchor" aria-hidden="true" href="#DeepTabular">#</a></h1>
 <p>For learning on tabular data, &ldquo;pure learning&rdquo; method corresponds to using a generic deep neural network (e.g. MLP) that treats the input as a flat vector and learns all feature interactions from scratch, and a &ldquo;pure theory&rdquo; method corresponds to hand-crafted feature engineering combined with simple models (linear or tree-based) that make strong structural assumptions about the data. By trying to achieve an optimal trade-off between learning and theory, I develop a non-linear LassoNet architecture that respects the known inductive biases of tabular data while retaining the representational power of deep learning. The structure / prior knowledge I use to achieve such trade-off is the set of inductive biases specific to tabular data.</p>
